@@ -1,4 +1,5 @@
 import { Canvas } from "@react-three/fiber";
+import { DirectionLight } from "./DirectionLight";
 
 interface SceneProps {
   children: React.ReactNode;
@@ -8,13 +9,14 @@ export const Scene = ({ children }: SceneProps) => {
   return (
     <Canvas
       orthographic
+      shadows
       camera={{
         up: [0, 0, 1],
         position: [300, -300, 300],
       }}
     >
       <ambientLight />
-      <directionalLight position={[-100, -100, 200]} />
+      <DirectionLight />
       {children}
     </Canvas>
   );

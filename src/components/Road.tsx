@@ -8,7 +8,7 @@ interface RoadProps {
 export const Road = ({ rowIndex, children }: RoadProps) => {
   return (
     <group position-y={rowIndex * TILE_SIZE}>
-      <mesh>
+      <mesh receiveShadow>
         <planeGeometry args={[TILES_PER_ROW * TILE_SIZE, TILE_SIZE]} />
         <meshLambertMaterial color={0x454a59} flatShading />
       </mesh>
