@@ -1,8 +1,9 @@
 import { calculateFinalPosition } from "./calculateFinalPosition";
 
-import type { MoveDirection } from "../types";
 import { MAX_TILE_INDEX, MIN_TILE_INDEX } from "../constants";
-import { rows } from "../metadata";
+import useMapStore from "../stores/map";
+
+import type { MoveDirection } from "../types";
 
 export const endsUpInValidPosition = (
   currentPosition: { rowIndex: number; tileIndex: number },
@@ -20,7 +21,7 @@ export const endsUpInValidPosition = (
   }
 
   // 撞树
-  const finalRow = rows[finalPosition.rowIndex - 1];
+  const finalRow = useMapStore.getState().rows[finalPosition.rowIndex - 1];
   if (
     finalRow &&
     finalRow.type === "forest" &&
