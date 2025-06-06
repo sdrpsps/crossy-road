@@ -1,3 +1,5 @@
+import * as THREE from "three";
+
 import { endsUpInValidPosition } from "../utils/endsUpInValidPosition";
 import useMapStore from "./map";
 
@@ -8,10 +10,12 @@ export const state: {
   currentRow: number;
   currentTile: number;
   movesQueue: MoveDirection[];
+  ref: THREE.Object3D | null;
 } = {
   currentRow: 0,
   currentTile: 0,
   movesQueue: [],
+  ref: null,
 };
 
 export const queueMove = (direction: MoveDirection) => {
@@ -52,4 +56,20 @@ export const stepCompleted = () => {
   }
 
   useGameStore.getState().updateScore(state.currentRow);
+};
+
+export const setPlayerRef = (ref: THREE.Object3D) => {
+  state.ref = ref;
+};
+
+export const reset = () => {
+  state.currentRow = 0;
+  state.currentTile = 0;
+  state.movesQueue = [];
+
+  if (!state.ref) return;
+
+  state.ref.position.x = 0;
+  state.ref.position.y = 0;
+  state.ref.children[0].rotation.z = 0;
 };

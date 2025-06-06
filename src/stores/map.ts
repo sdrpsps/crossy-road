@@ -7,6 +7,7 @@ import type { Row } from "../types";
 interface MapStoreState {
   rows: Row[];
   addRow: () => void;
+  reset: () => void;
 }
 
 const useMapStore = create<MapStoreState>((set) => ({
@@ -18,6 +19,7 @@ const useMapStore = create<MapStoreState>((set) => ({
       rows: [...state.rows, ...newRows],
     }));
   },
+  reset: () => set({ rows: generateRows(20) }),
 }));
 
 export default useMapStore;

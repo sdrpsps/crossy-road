@@ -2,6 +2,7 @@ import { useRef } from "react";
 import * as THREE from "three";
 
 import { TILE_SIZE } from "../constants";
+import { useHitDetection } from "../hooks/useHitDetection";
 import { useVehicleAnimation } from "../hooks/useVehicleAnimation";
 import { Wheel } from "./Wheel";
 
@@ -22,6 +23,7 @@ export const Truck = ({
 }: TrunkProps) => {
   const truckRef = useRef<THREE.Group>(null);
   useVehicleAnimation(truckRef, direction, speed);
+  useHitDetection(truckRef, rowIndex);
 
   return (
     <group

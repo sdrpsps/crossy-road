@@ -1,6 +1,7 @@
 import { Control } from "./components/Control";
 import { Map } from "./components/Map";
 import { Player } from "./components/Player";
+import { Result } from "./components/Result";
 import { Scene } from "./components/Scene";
 import { Score } from "./components/Score";
 
@@ -13,6 +14,7 @@ const Game = () => {
       </Scene>
       <Score />
       <Control />
+      <Result />
     </div>
   );
 };
