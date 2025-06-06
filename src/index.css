@@ -1,9 +1,22 @@
-body {
-  margin: 0;
-  display: flex;
-  min-height: 100vh;
+@import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
+@import "tailwindcss";
+
+@theme {
+  --font-pixel: "Press Start 2P";
 }
 
-#root {
-  width: 100%;
+@layer base {
+  body {
+    @apply flex min-h-screen;
+  }
+
+  #root {
+    @apply w-full;
+  }
+}
+
+@layer utilities {
+  .control-button {
+    @apply px-4 py-2 border border-zinc-700 bg-white shadow-[3px_5px_0_0_rgba(0,0,0,0.75)] outline-none rounded-md cursor-pointer;
+  }
 }

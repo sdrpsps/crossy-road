@@ -8,6 +8,7 @@ interface SceneProps {
 export const Scene = ({ children }: SceneProps) => {
   return (
     <Canvas
+      className="font-pixel"
       orthographic
       shadows
       camera={{
