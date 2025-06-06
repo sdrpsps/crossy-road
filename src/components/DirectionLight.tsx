@@ -1,6 +1,13 @@
-export const DirectionLight = () => {
+import type * as THREE from "three";
+
+interface DirectionLightProps {
+  ref: React.RefObject<THREE.DirectionalLight | null>;
+}
+
+export const DirectionLight = ({ ref }: DirectionLightProps) => {
   return (
     <directionalLight
+      ref={ref}
       position={[-100, -100, 200]}
       up={[0, 0, 1]}
       castShadow

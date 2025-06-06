@@ -112,7 +112,7 @@ function setPosition(player: THREE.Group, progress: number) {
    * 当 progress = 0.5 时，sin(0.5π) = 1，z = 8（抬到最高点）
    * 当 progress = 1 时，sin(π) = 0，z = 0（落回地面）
    */
-  player.position.z = Math.sin(progress * Math.PI) * 8;
+  player.children[0].position.z = Math.sin(progress * Math.PI) * 8;
 }
 
 function setRotation(player: THREE.Group, progress: number) {
@@ -132,8 +132,8 @@ function setRotation(player: THREE.Group, progress: number) {
       break;
   }
 
-  player.rotation.z = THREE.MathUtils.lerp(
-    player.rotation.z,
+  player.children[0].rotation.z = THREE.MathUtils.lerp(
+    player.children[0].rotation.z,
     endRotation,
     progress
   );

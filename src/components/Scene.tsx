@@ -1,5 +1,4 @@
 import { Canvas } from "@react-three/fiber";
-import { DirectionLight } from "./DirectionLight";
 
 interface SceneProps {
   children: React.ReactNode;
@@ -17,7 +16,6 @@ export const Scene = ({ children }: SceneProps) => {
       }}
     >
       <ambientLight />
-      <DirectionLight />
       {children}
     </Canvas>
   );
