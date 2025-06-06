@@ -1,21 +1,32 @@
 import type { MoveDirection } from "../types";
+import { endsUpInValidPosition } from "../utils/endsUpInValidPosition";
 
 export const state: {
   currentRow: number;
   currentTile: number;
-  moveQueue: MoveDirection[];
+  movesQueue: MoveDirection[];
 } = {
   currentRow: 0,
   currentTile: 0,
-  moveQueue: [],
+  movesQueue: [],
 };
 
 export const queueMove = (direction: MoveDirection) => {
-  state.moveQueue.push(direction);
+  const isValidMove = endsUpInValidPosition(
+    {
+      rowIndex: state.currentRow,
+      tileIndex: state.currentTile,
+    },
+    [...state.movesQueue, direction]
+  );
+
+  if (!isValidMove) return;
+
+  state.movesQueue.push(direction);
 };
 
 export const stepCompleted = () => {
-  const direction = state.moveQueue.shift();
+  const direction = state.movesQueue.shift();
   if (!direction) return;
 
   switch (direction) {

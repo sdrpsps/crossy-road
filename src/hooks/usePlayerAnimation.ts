@@ -63,7 +63,7 @@ export const usePlayerAnimation = (
 
   useFrame(() => {
     if (!ref.current) return;
-    if (!state.moveQueue.length) return;
+    if (!state.movesQueue.length) return;
 
     const player = ref.current;
 
@@ -87,7 +87,7 @@ function setPosition(player: THREE.Group, progress: number) {
   let endX = startX;
   let endY = startY;
 
-  switch (state.moveQueue[0]) {
+  switch (state.movesQueue[0]) {
     case "forward":
       endY += TILE_SIZE;
       break;
@@ -117,7 +117,7 @@ function setPosition(player: THREE.Group, progress: number) {
 
 function setRotation(player: THREE.Group, progress: number) {
   let endRotation = 0;
-  switch (state.moveQueue[0]) {
+  switch (state.movesQueue[0]) {
     case "forward":
       endRotation = 0;
       break;
