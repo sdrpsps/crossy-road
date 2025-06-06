@@ -1,6 +1,8 @@
+import { useRef } from "react";
 import * as THREE from "three";
 
 import { TILE_SIZE } from "../constants";
+import { useVehicleAnimation } from "../hooks/useVehicleAnimation";
 import { Wheel } from "./Wheel";
 
 interface TrunkProps {
@@ -18,8 +20,12 @@ export const Truck = ({
   speed,
   color,
 }: TrunkProps) => {
+  const truckRef = useRef<THREE.Group>(null);
+  useVehicleAnimation(truckRef, direction, speed);
+
   return (
     <group
+      ref={truckRef}
       position-x={initialTileIndex * TILE_SIZE}
       rotation-z={direction ? 0 : Math.PI}
     >
